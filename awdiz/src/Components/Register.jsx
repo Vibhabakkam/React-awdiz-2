@@ -1,18 +1,23 @@
-import{ useState } from "react";
+import { useState } from "react";
 import './Register.css'
+import { useNavigate } from "react-router-dom";
 
 function Register() {
     const [userData, setUserData] = useState({ name: "", email: "", password: "" });
     // console.log(userData, "userData check here");
+    const router = useNavigate();
 
-    function handleSubmit(event) {
-        event.preventDefault();
+    function handleSubmit(e) {
+        e.preventDefault();
         // console.log(userData, "after submit");
-        var usersFromDB = JSON.parse(localStorage.getItem("userFromReact")) || [];
+        var usersFromDB = JSON.parse(localStorage.getItem("userData")) || [];
         usersFromDB.push(userData);
-        localStorage.setItem("userForReact", JSON.stringify(usersFromDB));
+        localStorage.setItem("userData", JSON.stringify(usersFromDB));
+        console.log(usersFromDB);
         setUserData({ name: "", email: "", password: "" });
         alert("Registration Done...");
+        router ('/Login');
+        
     }
 
     function updatingData(e) {
@@ -33,17 +38,17 @@ function Register() {
                         </div>
                     </div>
                     <div>
-                        
+
                     </div>
                 </div>
-                <form onSubmit={(event) => handleSubmit(event)}>
+                <form onSubmit={(e) => handleSubmit(e)}>
                     <label>Name</label><br />
                     <input onChange={updatingData} name='name' value={userData.name} type="text" placeholder="Type your Name" /><br />
                     <label>Email</label><br />
                     <input onChange={updatingData} name='email' value={userData.email} type="email" placeholder="Type your Email" /><br />
                     <label>Password</label><br />
                     <input onChange={updatingData} name='password' value={userData.password} type="password" placeholder="Type your Passwrd" /><br />
-                    <button>Have a referral code?</button><br/>
+                    <button>Have a referral code?</button><br />
                     <input type="submit" value="Register" />
                     <div>By creating an account, I accept the Terms & Conditions & Privacy Policy</div>
 
