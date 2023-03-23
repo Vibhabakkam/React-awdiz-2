@@ -22,6 +22,7 @@ const Effect2 = () => {
                 <h1> {e.title}</h1>
                 <p> {e.price}</p>
                 <p> 250 for each</p>
+                
             </div>
          )  
          )
