@@ -6,6 +6,7 @@ import Home from './Home';
 import Login from './Login';
 import Addproduct from './Addproduct';
 import { Routes, Route } from 'react-router-dom'
+import ProductPage from './ProductPage'
 
 
 function App() {
@@ -16,6 +17,8 @@ function App() {
         <Route excat path='/Login' element={< Login />} />
         <Route excat path='/Register' element={<Register />} />
         <Route excat path='/Addproduct' element={<Addproduct />} />
+        <Route excat path='/productPage' element={<ProductPage />} />
+
         <Route />
       </Routes>
     </div>
